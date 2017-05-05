@@ -7,7 +7,7 @@
     "prestart": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsc && concurrently \"npm run tsc:w\"",
-    "start": "tsc && concurrently \"npm run tsc:w\" \"node ./dist/start.js\"",
+    "start": "webpack --config webpack.config.js --watch",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings",
@@ -24,10 +24,14 @@
     "request": "^2.79.0"
   },
   "devDependencies": {
+    "bunyan": "1.5.x",
     "concurrently": "^3.1.0",
+    "json-loader": "^0.5.4",
+    "nodemon": "1.4.x",
+    "reload-server-webpack-plugin": "^1.0.1",
+    "ts-loader": "^2.0.3",
     "typescript": "^2.0.10",
     "typings": "^2.0.0",
-    "bunyan": "1.5.x",
-    "nodemon": "1.4.x"
+    "webpack": "^2.1.0-beta.21"
   }
 }
