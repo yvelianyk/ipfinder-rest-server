@@ -1,0 +1,15 @@
+{
+  "globalDependencies": {
+    "core-js": "registry:dt/core-js#0.0.0+20160914114559",
+    "jasmine": "registry:dt/jasmine#2.5.0+20161025102649",
+    "node": "registry:dt/node#6.0.0+20161110151007"
+  },
+  "dependencies": {
+    "body-parser": "registry:npm/body-parser#1.15.2+20161116154925",
+    "cors": "registry:npm/cors#2.7.0+20160902012746",
+    "express": "registry:npm/express#4.14.0+20160925001530",
+    "express-jwt": "registry:npm/express-jwt#3.4.0+20160813170757",
+    "mongoose": "registry:npm/mongoose#4.3.5+20160628072220",
+    "request": "registry:npm/request#2.69.0+20160428223725"
+  }
+}
