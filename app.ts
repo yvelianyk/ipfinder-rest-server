@@ -1,15 +1,12 @@
-'use strict';
-
 import * as express from 'express';
 import { json, urlencoded } from 'body-parser';
 import * as cors from 'cors';
 
-import { StaticService } from './services/staticService';
-import { routes } from "./routes";
-import * as handlers from "./handlers";
+import { AuthService } from './services/auth.service';
+import { RouterService } from './services/router.service';
 
 const app: express.Application = express();
-const router: express.Router = express.Router();
+const auth = new AuthService();
 
 app.disable('x-powered-by');
 
@@ -18,22 +15,13 @@ app.use(urlencoded({ extended: true }));
 app.use(cors());
 
 // ============================================================================================
+// Auth init
+// ============================================================================================
+auth.init();
+
+// ============================================================================================
 // Initialization of routes
 // ============================================================================================
-routes.forEach((route) => {
-    let callbacks = [];
-    // Wrap each route handler to perform access control:
-    callbacks.push((req: express.Request, res: express.Response, next) => {
-        handlers[route.handler](req, res, next);
-    });
-    router[route.method](route.path, callbacks);
-});
-
-app.use(router);
-
-// ============================================================================================
-// This section of code for providing serving of static client files
-// ============================================================================================
-//StaticService.init(app);
+RouterService.init(app);
 
 export { app }

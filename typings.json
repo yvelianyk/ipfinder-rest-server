@@ -1,17 +1,22 @@
 {
   "globalDependencies": {
     "core-js": "registry:dt/core-js#0.0.0+20160914114559",
+    "express-session": "registry:dt/express-session#0.0.0+20161119044246",
     "jasmine": "registry:dt/jasmine#2.5.0+20161025102649",
-    "node": "registry:dt/node#6.0.0+20161110151007"
+    "node": "registry:dt/node#6.0.0+20161110151007",
+    "underscore": "registry:dt/underscore#1.8.3+20161123125004"
   },
   "dependencies": {
     "body-parser": "registry:npm/body-parser#1.15.2+20161116154925",
+    "cookie-parser": "registry:dt/cookie-parser#1.3.4+20160428043022",
     "cors": "registry:npm/cors#2.7.0+20160902012746",
     "express": "registry:npm/express#4.14.0+20160925001530",
     "express-jwt": "registry:npm/express-jwt#3.4.0+20160813170757",
+    "jwt-simple": "registry:dt/jwt-simple#0.5.1+20170317034835",
     "mongoose": "registry:npm/mongoose#4.3.5+20160628072220",
     "passport": "registry:npm/passport#0.3.0+20161028163825",
     "passport-facebook": "registry:npm/passport-facebook#2.1.0+20161027191524",
+    "passport-strategy": "registry:npm/passport-strategy#1.0.0+20161027023236",
     "request": "registry:npm/request#2.69.0+20160428223725"
   }
 }

@@ -22,7 +22,7 @@ module.exports = {
     externals: nodeModules,
     resolve: {
         // Add '.ts' and '.tsx' as a resolvable extension.
-        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
     module: {
         loaders: [
@@ -38,9 +38,9 @@ module.exports = {
         })
     ],
     node: {
-        console: 'empty',
+        console: false,
         fs: 'empty',
         net: 'empty',
         tls: 'empty'
     }
-}
+};
