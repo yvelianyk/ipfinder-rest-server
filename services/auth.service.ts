@@ -38,7 +38,7 @@ export class AuthService {
 
     private _jwtStrategy = new JWTStrategy({
         secretOrKey: config.jwt.secret,
-        jwtFromRequest: ExtractJwt.fromAuthHeader()
+        jwtFromRequest: ExtractJwt.fromExtractors([this._jwtExtractor])
     }, function (user, done) {
         UserController.updateUserToken(user);
         return done(null, user);
@@ -59,6 +59,15 @@ export class AuthService {
 
     private _serializeHandler(user, done) {
         done(null, user);
+    }
+
+    private _jwtExtractor(req) {
+        if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+            return req.headers.authorization.split(' ')[1];
+        } else if (req.query && req.query.token) {
+            return req.query.token;
+        }
+        return null;
     }
 
 }
