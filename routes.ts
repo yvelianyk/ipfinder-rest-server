@@ -23,6 +23,12 @@ const routes = [
     "method": "get",
     "path": "/api/images",
     "handler": "getImages",
+    "access": AccessRoles.ANY
+  },
+  {
+    "method": "get",
+    "path": "/api/user",
+    "handler": "getCurrentUser",
     "access": AccessRoles.USER
   },
   {
