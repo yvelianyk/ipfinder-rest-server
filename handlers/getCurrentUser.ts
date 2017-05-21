@@ -1,6 +1,7 @@
 import { Response, Request } from "express";
 import { IUser } from '../models/users';
 import * as _ from 'underscore';
+import { AccessRoles } from '../services/ac.service';
 
 interface RequestWithUser extends Request {
     user: string;
@@ -9,7 +10,10 @@ interface RequestWithUser extends Request {
 const getCurrentUser = function(request: RequestWithUser, response: Response){
     let currentUser: IUser  = request.user;
     currentUser.connected = true;
-    response.json(_.pick(currentUser, 'name', 'email', 'avatar', 'connected'));
+    if (currentUser.access === AccessRoles.ADMIN) {
+        currentUser.isAdmin = true;
+    }
+    response.json(_.pick(currentUser, 'name', 'email', 'avatar', 'connected', 'isAdmin'));
 };
 
 export { getCurrentUser }

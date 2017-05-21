@@ -9,6 +9,7 @@ interface IUser {
     avatar?: string;
     access?: AccessRoles;
     connected?: boolean;
+    isAdmin?: boolean;
 }
 
 const users: IUser[] = [{
