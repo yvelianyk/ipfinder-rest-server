@@ -1,25 +1,17 @@
-var webpack = require('webpack');
-var path = require('path');
-var fs = require('fs');
-const ReloadServerPlugin = require("./node_modules/reload-server-webpack-plugin");
-
-var nodeModules = {};
-fs.readdirSync('node_modules')
-    .filter(function(x) {
-        return ['.bin'].indexOf(x) === -1;
-    })
-    .forEach(function(mod) {
-        nodeModules[mod] = 'commonjs ' + mod;
-    });
+const webpack = require('webpack');
+const path = require('path');
+const fs = require('fs');
+const WebpackShellPlugin = require('webpack-shell-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     entry: "./start.ts",
     target: 'node',
+    externals: [nodeExternals()],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: "bundle.js"
     },
-    externals: nodeModules,
     resolve: {
         // Add '.ts' and '.tsx' as a resolvable extension.
         extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
@@ -32,15 +24,13 @@ module.exports = {
         ]
     },
     plugins: [
-        new ReloadServerPlugin({
-            // Defaults to process.cwd() + "/server.js"
-            script: "dist/bundle.js"
-        })
+        new WebpackShellPlugin({onBuildEnd:['npm run watch']})
     ],
     node: {
         console: false,
         fs: 'empty',
         net: 'empty',
         tls: 'empty'
-    }
+    },
+    devtool: '#source-map'
 };

@@ -6,12 +6,9 @@
   "scripts": {
     "prestart": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsc && concurrently \"npm run tsc:w\"",
     "start": "webpack --config webpack.config.js --watch",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "watch": "nodemon --debug ./dist/bundle.js"
   },
   "author": "Slavko Vovkiv",
   "license": "MIT",
@@ -35,13 +32,14 @@
   },
   "devDependencies": {
     "bunyan": "1.5.x",
-    "concurrently": "^3.1.0",
     "json-loader": "^0.5.4",
     "nodemon": "1.4.x",
-    "reload-server-webpack-plugin": "^1.0.1",
+    "source-map-loader": "^0.2.1",
     "ts-loader": "^2.0.3",
     "typescript": "^2.0.10",
     "typings": "^2.0.0",
-    "webpack": "^2.1.0-beta.21"
+    "webpack": "^2.1.0-beta.21",
+    "webpack-node-externals": "^1.6.0",
+    "webpack-shell-plugin": "^0.5.0"
   }
 }
